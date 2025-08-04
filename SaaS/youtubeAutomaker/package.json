@@ -1,0 +1,21 @@
+{
+  "name": "youtube-automaker",
+  "version": "1.0.0",
+  "description": "YouTube Automaker - Full Stack Application",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "cd Frontend && npm run dev",
+    "dev:backend": "cd Backend && python main.py",
+    "setup-backend": "cd Backend && python -m venv venv && venv\\Scripts\\pip install -r requirements.txt",
+    "install-all": "cd Frontend && npm install && cd ../Backend && pip install -r requirements.txt",
+    "build": "cd Frontend && npm run build",
+    "start": "npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "keywords": ["youtube", "automation", "video", "content"],
+  "author": "YouTube Automaker Team",
+  "license": "MIT"
+}

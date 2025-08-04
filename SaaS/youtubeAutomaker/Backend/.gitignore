@@ -1,0 +1,12 @@
+# .gitignore
+__pycache__/
+*.pyc
+dist/
+build/
+config/
+*.spec
+*.exe
+img/
+.env
+data/
+.venv/

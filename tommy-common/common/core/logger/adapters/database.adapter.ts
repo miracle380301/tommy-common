@@ -120,10 +120,7 @@ export class MongoDBLoggerAdapter implements LoggerAdapter {
       level: entry.level,
       message: entry.message,
       context: entry.context,
-      error: entry.error ? {
-        message: entry.error.message,
-        stack: entry.error.stack
-      } : null
+      error: entry.error
     }));
 
     this.buffer = [];

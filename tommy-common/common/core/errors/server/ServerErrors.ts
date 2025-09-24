@@ -1,4 +1,4 @@
-import BaseError, { type ErrorDetails } from '../base/BaseErrors.ts';
+import BaseError, { type ErrorDetails } from '../base/BaseErrors';
 
 /**
  * 서버 에러 기본 클래스

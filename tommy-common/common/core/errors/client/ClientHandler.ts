@@ -1,4 +1,4 @@
-import BaseError, { type ErrorContext } from '../base/BaseErrors.ts';
+import BaseError, { type ErrorContext } from '../base/BaseErrors';
 
 export interface ClientErrorHandlerConfig {
   serviceName?: string;

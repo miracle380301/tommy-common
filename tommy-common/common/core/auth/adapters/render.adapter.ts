@@ -9,7 +9,7 @@ export const createRenderAdapter = (config: RenderAuthConfig): AuthAdapter => {
   const baseUrl = config.renderServerUrl;
   let currentSession: any = null;
 
-  return {
+  const adapter = {
     async signInWithProvider(provider: OAuthProvider, redirectTo?: string) {
       // Render 서버의 OAuth 엔드포인트로 리다이렉트
       const authUrl = `${baseUrl}/auth/${provider}`;
@@ -54,7 +54,7 @@ export const createRenderAdapter = (config: RenderAuthConfig): AuthAdapter => {
     },
 
     async getUser() {
-      const session = await this.getSession();
+      const session = await adapter.getSession();
       if (!session) return null;
 
       // Render 서버에서 사용자 정보 가져오기
@@ -102,7 +102,7 @@ export const createRenderAdapter = (config: RenderAuthConfig): AuthAdapter => {
             if (!response.ok) {
               // 토큰이 만료되었으면 갱신 시도
               if (refreshToken) {
-                return await this.refreshSession(refreshToken);
+                return await adapter.refreshSession(refreshToken);
               }
               currentSession = null;
             }
@@ -159,7 +159,7 @@ export const createRenderAdapter = (config: RenderAuthConfig): AuthAdapter => {
 
         // 새 토큰 저장
         if (data.access_token) {
-          return await this.setSession(data.access_token, data.refresh_token || refreshToken);
+          return await adapter.setSession(data.access_token, data.refresh_token || refreshToken);
         }
       } catch (error) {
         console.error('Refresh token error:', error);
@@ -171,7 +171,7 @@ export const createRenderAdapter = (config: RenderAuthConfig): AuthAdapter => {
 
     // Render 서버에서 활동 데이터 가져오기 (Strava 전용)
     async getActivities(page: number = 1) {
-      const session = await this.getSession();
+      const session = await adapter.getSession();
       if (!session) throw new Error('No session');
 
       const response = await fetch(`${baseUrl}/api/activities?page=${page}`, {
@@ -187,4 +187,6 @@ export const createRenderAdapter = (config: RenderAuthConfig): AuthAdapter => {
       return response.json();
     }
   };
+
+  return adapter;
 };

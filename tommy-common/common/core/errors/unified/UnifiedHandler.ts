@@ -1,6 +1,6 @@
-import BaseError, { type ErrorContext } from '../base/BaseErrors.ts';
-import ClientErrorHandler, { type ClientErrorHandlerConfig } from '../client/ClientHandler.ts';
-import ServerErrorHandler, { type ServerErrorHandlerConfig } from '../server/ServerHandler.ts';
+import BaseError, { type ErrorContext } from '../base/BaseErrors';
+import ClientErrorHandler, { type ClientErrorHandlerConfig } from '../client/ClientHandler';
+import ServerErrorHandler, { type ServerErrorHandlerConfig } from '../server/ServerHandler';
 
 export interface UnifiedErrorHandlerConfig {
   serviceName?: string;

@@ -1,0 +1,44 @@
+/* FormField */
+.form-field {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-field__label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+}
+
+.form-field__required {
+  color: var(--error);
+  margin-left: 2px;
+}
+
+.form-field__error {
+  display: block;
+  color: var(--error);
+  font-size: 0.75rem;
+  margin-top: var(--spacing-xs);
+}
+
+.form-field__helper {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  margin-top: var(--spacing-xs);
+}
+
+/* 에러 상태일 때 입력 필드 스타일 */
+.form-field--error input,
+.form-field--error textarea,
+.form-field--error select {
+  border-color: var(--error);
+}
+
+.form-field--error input:focus,
+.form-field--error textarea:focus,
+.form-field--error select:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}

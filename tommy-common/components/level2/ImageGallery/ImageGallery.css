@@ -1,0 +1,90 @@
+.image-gallery {
+  width: 100%;
+}
+
+.image-gallery__item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+  background: var(--bg-secondary);
+}
+
+.image-gallery__item:hover {
+  transform: scale(1.05);
+}
+
+.image-gallery__img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: opacity var(--transition-fast);
+}
+
+.image-gallery__item:hover .image-gallery__img {
+  opacity: 0.9;
+}
+
+.image-gallery__caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  color: white;
+  font-size: 0.875rem;
+  transform: translateY(100%);
+  transition: transform var(--transition-fast);
+}
+
+.image-gallery__item:hover .image-gallery__caption {
+  transform: translateY(0);
+}
+
+.image-gallery__lightbox-caption {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.image-gallery__counter {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* Minimal Theme */
+[data-theme="minimal"] .image-gallery__item {
+  border: 1px solid var(--border-color);
+}
+
+/* Glassmorphism Theme */
+[data-theme="glassmorphism"] .image-gallery__item {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+[data-theme="glassmorphism"] .image-gallery__caption {
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.9), transparent);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  color: var(--text-primary);
+}
+
+/* Neon Theme */
+[data-theme="neon"] .image-gallery__item {
+  border: 1px solid var(--primary);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+}
+
+[data-theme="neon"] .image-gallery__item:hover {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+}
+
+[data-theme="neon"] .image-gallery__caption {
+  background: linear-gradient(to top, rgba(26, 26, 46, 0.9), transparent);
+}

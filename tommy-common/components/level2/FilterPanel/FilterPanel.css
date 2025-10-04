@@ -1,0 +1,23 @@
+.filter-panel {
+  width: 100%;
+}
+
+/* Minimal Theme */
+[data-theme="minimal"] .filter-panel {
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+}
+
+/* Glassmorphism Theme */
+[data-theme="glassmorphism"] .filter-panel {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Neon Theme */
+[data-theme="neon"] .filter-panel {
+  border-color: var(--primary);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+}

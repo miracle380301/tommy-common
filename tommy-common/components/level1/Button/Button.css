@@ -1,0 +1,233 @@
+@import '../../styles/variables.css';
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all var(--transition-base);
+  border-radius: var(--radius-md);
+  outline: none;
+}
+
+/* Size variants */
+.btn--sm {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 14px;
+  height: 32px;
+}
+
+.btn--md {
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: 16px;
+  height: 40px;
+}
+
+.btn--lg {
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: 18px;
+  height: 48px;
+}
+
+/* Variant styles - minimal theme */
+.btn--minimal.btn--primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn--minimal.btn--primary:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--minimal.btn--secondary {
+  background-color: var(--secondary);
+  color: white;
+}
+
+.btn--minimal.btn--secondary:hover:not(:disabled) {
+  background-color: var(--secondary-hover);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--minimal.btn--outline {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.btn--minimal.btn--outline:hover:not(:disabled) {
+  background-color: var(--bg-secondary);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn--minimal.btn--ghost {
+  background-color: transparent;
+  color: var(--text-primary);
+}
+
+.btn--minimal.btn--ghost:hover:not(:disabled) {
+  background-color: var(--bg-secondary);
+}
+
+/* Glassmorphism theme */
+.btn--glassmorphism {
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+}
+
+.btn--glassmorphism.btn--primary {
+  background: rgba(59, 130, 246, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: white;
+}
+
+.btn--glassmorphism.btn--primary:hover:not(:disabled) {
+  background: rgba(37, 99, 235, 0.8);
+  box-shadow: var(--shadow-md);
+}
+
+.btn--glassmorphism.btn--secondary {
+  background: rgba(100, 116, 139, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: white;
+}
+
+.btn--glassmorphism.btn--secondary:hover:not(:disabled) {
+  background: rgba(71, 85, 105, 0.8);
+  box-shadow: var(--shadow-md);
+}
+
+.btn--glassmorphism.btn--outline {
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--text-primary);
+}
+
+.btn--glassmorphism.btn--outline:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(59, 130, 246, 0.5);
+}
+
+.btn--glassmorphism.btn--ghost {
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.btn--glassmorphism.btn--ghost:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Neon theme */
+.btn--neon.btn--primary {
+  background-color: var(--primary);
+  border: 2px solid var(--primary);
+  color: white;
+  box-shadow: var(--primary-glow);
+}
+
+.btn--neon.btn--primary:hover:not(:disabled) {
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.8);
+  filter: brightness(1.2);
+}
+
+.btn--neon.btn--secondary {
+  background-color: var(--bg-secondary);
+  border: 2px solid var(--text-secondary);
+  color: var(--text-secondary);
+  box-shadow: 0 0 15px rgba(167, 139, 250, 0.4);
+}
+
+.btn--neon.btn--secondary:hover:not(:disabled) {
+  box-shadow: 0 0 25px rgba(167, 139, 250, 0.6);
+  filter: brightness(1.2);
+}
+
+.btn--neon.btn--outline {
+  background-color: transparent;
+  border: 2px solid var(--border-color);
+  color: var(--text-primary);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+}
+
+.btn--neon.btn--outline:hover:not(:disabled) {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+  background-color: rgba(139, 92, 246, 0.1);
+}
+
+.btn--neon.btn--ghost {
+  background-color: transparent;
+  border: none;
+  color: var(--text-primary);
+}
+
+.btn--neon.btn--ghost:hover:not(:disabled) {
+  background-color: rgba(139, 92, 246, 0.2);
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+}
+
+/* States */
+.btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.btn--disabled,
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn--loading {
+  position: relative;
+  cursor: wait;
+}
+
+/* Full width */
+.btn--full-width {
+  width: 100%;
+}
+
+/* Icon */
+.btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn__icon--left {
+  margin-right: var(--spacing-xs);
+}
+
+.btn__icon--right {
+  margin-left: var(--spacing-xs);
+}
+
+/* Spinner animation */
+.btn__spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

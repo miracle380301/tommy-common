@@ -1,0 +1,116 @@
+/* Chip */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  max-width: 100%;
+}
+
+.chip--sm {
+  padding: 2px 8px;
+  font-size: 0.75rem;
+}
+
+.chip--clickable {
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.chip--clickable:hover {
+  background: var(--bg-tertiary);
+  transform: translateY(-1px);
+}
+
+.chip--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Outlined variant */
+.chip--outlined {
+  background: transparent;
+  border: 1px solid currentColor;
+}
+
+/* Avatar */
+.chip__avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: -6px;
+}
+
+.chip__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.chip--sm .chip__avatar {
+  width: 20px;
+  height: 20px;
+  margin-left: -4px;
+}
+
+/* Label */
+.chip__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Delete button */
+.chip__delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: currentColor;
+  opacity: 0.6;
+  transition: all var(--transition-fast);
+  margin-right: -4px;
+}
+
+.chip__delete:hover:not(:disabled) {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.chip__delete:disabled {
+  cursor: not-allowed;
+}
+
+/* Glassmorphism Theme */
+[data-theme="glassmorphism"] .chip--filled {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Neon Theme */
+[data-theme="neon"] .chip {
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.2);
+}
+
+[data-theme="neon"] .chip--clickable:hover {
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.4);
+}

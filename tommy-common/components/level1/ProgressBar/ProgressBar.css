@@ -1,0 +1,119 @@
+/* Progress Bar Container */
+.progress-bar-container {
+  width: 100%;
+  position: relative;
+}
+
+.progress-bar {
+  width: 100%;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar--sm {
+  height: 8px;
+}
+
+.progress-bar--md {
+  height: 16px;
+}
+
+.progress-bar--lg {
+  height: 24px;
+}
+
+.progress-bar__fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Animated */
+.progress-bar__fill--animated {
+  transition: width 0.6s ease;
+}
+
+/* Striped */
+.progress-bar__fill--striped {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+  animation: progress-bar-stripes 1s linear infinite;
+}
+
+@keyframes progress-bar-stripes {
+  0% {
+    background-position: 1rem 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/* Variants */
+.progress-bar__fill--default {
+  background: var(--primary);
+}
+
+.progress-bar__fill--success {
+  background: var(--success);
+}
+
+.progress-bar__fill--warning {
+  background: var(--warning);
+}
+
+.progress-bar__fill--error {
+  background: var(--error);
+}
+
+/* Label */
+.progress-bar__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.progress-bar__label--outside {
+  position: absolute;
+  right: var(--spacing-sm);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-primary);
+}
+
+.progress-bar__label--top {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-primary);
+  text-align: right;
+}
+
+/* Neon Theme */
+[data-theme="neon"] .progress-bar__fill--default {
+  box-shadow: 0 0 10px var(--primary);
+}
+
+[data-theme="neon"] .progress-bar__fill--success {
+  box-shadow: 0 0 10px var(--success);
+}
+
+[data-theme="neon"] .progress-bar__fill--error {
+  box-shadow: 0 0 10px var(--error);
+}

@@ -13,10 +13,12 @@
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "allowImportingTsExtensions": false,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "jsx": "react"
   },
   "include": [
     "common/**/*",
+    "components/**/*",
     "index.ts"
   ],
   "exclude": [

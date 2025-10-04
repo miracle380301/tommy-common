@@ -1,0 +1,102 @@
+.file-uploader {
+  width: 100%;
+}
+
+.file-uploader__dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-3xl);
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.file-uploader__dropzone:hover {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.file-uploader__dropzone--active {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.file-uploader__icon {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.file-uploader__dropzone h4 {
+  margin: 0 0 var(--spacing-sm);
+  color: var(--text-primary);
+}
+
+.file-uploader__hint {
+  margin: 0 0 var(--spacing-md);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.file-uploader__files {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin: var(--spacing-md) 0;
+}
+
+.file-uploader__file {
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-primary);
+}
+
+.file-uploader__file-icon {
+  font-size: 1.5rem;
+}
+
+.file-uploader__file-name {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.file-uploader__file-size {
+  color: var(--text-secondary);
+}
+
+/* Minimal Theme */
+[data-theme="minimal"] .file-uploader__dropzone {
+  border-color: var(--border-color);
+}
+
+/* Glassmorphism Theme */
+[data-theme="glassmorphism"] .file-uploader__dropzone {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+[data-theme="glassmorphism"] .file-uploader__file {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* Neon Theme */
+[data-theme="neon"] .file-uploader__dropzone {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 20px rgba(139, 92, 246, 0.1);
+}
+
+[data-theme="neon"] .file-uploader__dropzone:hover {
+  box-shadow: inset 0 0 30px rgba(139, 92, 246, 0.2);
+}
+
+[data-theme="neon"] .file-uploader__file {
+  border-color: var(--primary);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+}

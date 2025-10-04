@@ -1,0 +1,78 @@
+/* Spinner */
+.spinner {
+  display: inline-block;
+  border: 3px solid rgba(139, 92, 246, 0.1);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spinner-rotate 0.8s linear infinite;
+}
+
+.spinner--sm {
+  width: 16px;
+  height: 16px;
+  border-width: 2px;
+}
+
+.spinner--md {
+  width: 32px;
+  height: 32px;
+  border-width: 3px;
+}
+
+.spinner--lg {
+  width: 48px;
+  height: 48px;
+  border-width: 4px;
+}
+
+@keyframes spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Full Screen Overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  z-index: 9999;
+}
+
+.loading-overlay__text {
+  color: white;
+  font-size: 1rem;
+}
+
+/* Inline Loading */
+.loading-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.loading-text {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+/* Theme-specific */
+[data-theme="glassmorphism"] .loading-overlay {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+[data-theme="neon"] .spinner {
+  border-color: rgba(139, 92, 246, 0.2);
+  border-top-color: var(--primary);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+}

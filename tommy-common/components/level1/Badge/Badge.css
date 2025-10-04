@@ -1,0 +1,94 @@
+/* Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+/* Sizes */
+.badge--sm {
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  height: 20px;
+}
+
+.badge--md {
+  padding: 4px 12px;
+  font-size: 0.875rem;
+  height: 24px;
+}
+
+/* Variants */
+.badge--default {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.badge--success {
+  background: var(--success);
+  color: white;
+}
+
+.badge--warning {
+  background: var(--warning);
+  color: white;
+}
+
+.badge--error {
+  background: var(--error);
+  color: white;
+}
+
+.badge--info {
+  background: var(--info);
+  color: white;
+}
+
+/* Dot */
+.badge--dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+/* Pulse Animation */
+.badge--pulse {
+  animation: badge-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes badge-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Neon Theme */
+[data-theme="neon"] .badge--success {
+  box-shadow: 0 0 10px var(--success);
+}
+
+[data-theme="neon"] .badge--error {
+  box-shadow: 0 0 10px var(--error);
+}
+
+[data-theme="neon"] .badge--warning {
+  box-shadow: 0 0 10px var(--warning);
+}
+
+[data-theme="neon"] .badge--info {
+  box-shadow: 0 0 10px var(--info);
+}
+
+/* Glassmorphism Theme */
+[data-theme="glassmorphism"] .badge--default {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}

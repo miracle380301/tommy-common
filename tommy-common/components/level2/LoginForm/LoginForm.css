@@ -1,0 +1,52 @@
+.login-form {
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.login-form__subtitle {
+  margin-top: var(--spacing-xs);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.login-form__error {
+  padding: var(--spacing-md);
+  background: var(--error);
+  color: white;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-md);
+  font-size: 0.875rem;
+}
+
+.login-form__social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-right: var(--spacing-xs);
+  font-weight: 600;
+}
+
+/* Minimal Theme */
+[data-theme="minimal"] .login-form {
+  --form-spacing: var(--spacing-md);
+}
+
+/* Glassmorphism Theme */
+[data-theme="glassmorphism"] .login-form {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Neon Theme */
+[data-theme="neon"] .login-form {
+  border-color: var(--primary);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+[data-theme="neon"] .login-form__error {
+  background: var(--error);
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}

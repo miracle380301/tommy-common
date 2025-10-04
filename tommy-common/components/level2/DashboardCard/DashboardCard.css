@@ -1,0 +1,51 @@
+.dashboard-card {
+  height: 100%;
+}
+
+.dashboard-card__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.dashboard-card__subtitle {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: var(--spacing-xs) 0 0;
+}
+
+.dashboard-card__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.dashboard-card__loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+/* Minimal Theme */
+[data-theme="minimal"] .dashboard-card {
+  border: 1px solid var(--border-color);
+}
+
+/* Glassmorphism Theme */
+[data-theme="glassmorphism"] .dashboard-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Neon Theme */
+[data-theme="neon"] .dashboard-card {
+  border-color: var(--primary);
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+}
+
+[data-theme="neon"] .dashboard-card__title {
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+}

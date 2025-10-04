@@ -1,0 +1,32 @@
+.grid {
+  display: grid;
+}
+
+.grid--auto {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Responsive columns support */
+@media (min-width: 640px) {
+  .grid[data-columns-sm] {
+    grid-template-columns: repeat(var(--columns-sm), 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .grid[data-columns-md] {
+    grid-template-columns: repeat(var(--columns-md), 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid[data-columns-lg] {
+    grid-template-columns: repeat(var(--columns-lg), 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .grid[data-columns-xl] {
+    grid-template-columns: repeat(var(--columns-xl), 1fr);
+  }
+}

@@ -54,5 +54,12 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/miracle380301/tommy-common.git"
-  }
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "src/**/*",
+    "README.md"
+  ]
 }

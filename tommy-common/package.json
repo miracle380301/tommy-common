@@ -1,6 +1,6 @@
 {
   "name": "@miracle380301/tommy-common",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Common modules for Tommy projects",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

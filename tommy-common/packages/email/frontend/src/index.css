@@ -1,0 +1,5 @@
+@import '@miracle380301/common/dist/styles/variables.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

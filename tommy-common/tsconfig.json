@@ -2,29 +2,12 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "commonjs",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "declaration": true,
-    "outDir": "./dist",
-    "rootDir": "./",
+    "lib": ["ES2020"],
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "moduleResolution": "node",
-    "allowImportingTsExtensions": false,
-    "noImplicitAny": false,
-    "jsx": "react"
-  },
-  "include": [
-    "common/**/*",
-    "components/**/*",
-    "index.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "test/**/*",
-    "common/**/examples/**/*"
-  ]
+    "moduleResolution": "node"
+  }
 }

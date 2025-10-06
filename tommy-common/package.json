@@ -1,74 +1,41 @@
 {
-  "name": "@miracle380301/tommy-common",
-  "version": "1.0.6",
-  "description": "Common modules for Tommy projects (Frontend + Backend)",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    },
-    "./backend": "./backend-modules/src/index.js",
-    "./backend/*": "./backend-modules/src/*"
-  },
-  "files": [
-    "dist/**/*",
-    "backend-modules/src/**/*",
-    "backend-modules/README.md"
-  ],
+  "name": "tommy-modules",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Monorepo for Tommy project modules",
   "scripts": {
-    "build": "tsc && npm run copy-css",
-    "copy-css": "copyfiles -u 1 \"components/styles/**/*\" \"components/types/**/*\" \"components/level1/**/*.css\" \"components/level2/**/*.css\" dist",
-    "dev": "tsc --watch",
-    "prepublishOnly": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "@supabase/supabase-js": "^2.57.4",
-    "firebase": "^12.2.1",
-    "zod": "^4.1.11"
+    "build": "pnpm -r build",
+    "dev": "pnpm -r dev",
+    "clean": "pnpm -r clean",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^4.1.1",
+    "@storybook/addon-a11y": "^9.1.10",
+    "@storybook/addon-docs": "^9.1.10",
+    "@storybook/addon-onboarding": "^9.1.10",
+    "@storybook/addon-vitest": "^9.1.10",
+    "@storybook/react-vite": "^9.1.10",
     "@types/node": "^20.0.0",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.3.7",
-    "copyfiles": "^2.4.1",
+    "autoprefixer": "^10.4.21",
+    "msw": "^2.11.3",
+    "msw-storybook-addon": "^2.0.5",
+    "postcss": "^8.5.6",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.9.3",
+    "storybook": "^9.1.10",
+    "tailwindcss": "^3.4.18",
     "typescript": "^5.0.0"
-  },
-  "peerDependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
-  },
-  "optionalDependencies": {
-    "express": "^4.18.2",
-    "dotenv": "^16.3.1",
-    "helmet": "^7.1.0",
-    "cors": "^2.8.5",
-    "compression": "^1.7.4",
-    "winston": "^3.11.0",
-    "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.0",
-    "mongoose": "^8.0.0",
-    "sequelize": "^6.35.0",
-    "pg": "^8.11.0",
-    "pg-hstore": "^2.3.4",
-    "mysql2": "^3.6.0",
-    "sqlite3": "^5.1.0",
-    "jsonwebtoken": "^9.0.2",
-    "bcrypt": "^5.1.1",
-    "joi": "^17.11.0",
-    "axios": "^1.6.0",
-    "multer": "^1.4.5-lts.1",
-    "sharp": "^0.33.0",
-    "bull": "^4.12.0",
-    "ioredis": "^5.3.0"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/miracle380301/tommy-common.git"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }

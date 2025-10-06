@@ -1,0 +1,104 @@
+<style>
+  /* Storybook code block - 모든 코드 영역 강제 스타일 적용 */
+
+  /* 1. 모든 pre, code 태그에 기본 스타일 적용 (docs 내부) */
+  .sbdocs pre,
+  .sbdocs code {
+    background-color: #1e1e1e !important;
+    color: #d4d4d4 !important;
+  }
+
+  /* 2. 모든 클래스 이름에 상관없이 적용 */
+  div[class*="source"] pre,
+  div[class*="source"] code,
+  div[class*="Source"] pre,
+  div[class*="Source"] code,
+  div[class*="snippet"] pre,
+  div[class*="snippet"] code {
+    background-color: #1e1e1e !important;
+    color: #d4d4d4 !important;
+  }
+
+  /* 3. Emotion CSS 클래스 전체 포함 */
+  div[class^="css-"] pre,
+  div[class^="css-"] code,
+  div[class*="css-"] pre,
+  div[class*="css-"] code {
+    background-color: #1e1e1e !important;
+    color: #d4d4d4 !important;
+  }
+
+  /* 4. Language 관련 모든 클래스 */
+  code[class*="language-"],
+  pre[class*="language-"] {
+    background-color: #1e1e1e !important;
+    color: #d4d4d4 !important;
+  }
+
+  /* 5. Prism 관련 */
+  code[class*="prism"],
+  pre[class*="prism"] {
+    background-color: #1e1e1e !important;
+    color: #d4d4d4 !important;
+  }
+
+  /* 6. 특정 Storybook 클래스들 */
+  .docblock-source,
+  .docblock-source pre,
+  .docblock-source code {
+    background-color: #1e1e1e !important;
+    color: #d4d4d4 !important;
+    border: 1px solid #333 !important;
+  }
+
+  /* 7. 코드 블록 컨테이너 */
+  div[class*="syntaxhighlighter"],
+  div[class*="SyntaxHighlighter"] {
+    background-color: #1e1e1e !important;
+  }
+
+  /* 8. 모든 중첩된 코드 요소 */
+  * code,
+  * pre {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
+  }
+
+  /* Prism token colors */
+  .token.tag {
+    color: #569cd6 !important;
+  }
+
+  .token.attr-name {
+    color: #9cdcfe !important;
+  }
+
+  .token.attr-value,
+  .token.string {
+    color: #ce9178 !important;
+  }
+
+  .token.punctuation {
+    color: #d4d4d4 !important;
+  }
+
+  .token.keyword {
+    color: #c586c0 !important;
+  }
+
+  .token.function {
+    color: #dcdcaa !important;
+  }
+
+  .token.operator {
+    color: #d4d4d4 !important;
+  }
+
+  /* Docs preview area - 하얀 배경 유지 */
+  .sbdocs-preview,
+  .docs-story,
+  div[class*="previewWrapper"] {
+    background-color: #ffffff !important;
+  }
+
+  /* Show/Hide code 버튼은 원래 스타일 유지 (여기서 제외) */
+</style>

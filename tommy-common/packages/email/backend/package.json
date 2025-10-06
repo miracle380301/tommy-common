@@ -1,0 +1,46 @@
+{
+  "name": "@miracle380301/email-service",
+  "version": "1.0.0",
+  "description": "Email Service with multiple provider support",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/**/*",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only -r dotenv/config src/server.ts",
+    "build": "tsc",
+    "start": "node -r dotenv/config dist/server.js",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "nodemailer": "^7.0.6",
+    "resend": "^6.1.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.10.0",
+    "@types/nodemailer": "^7.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miracle380301/tommy-common.git",
+    "directory": "packages/email/backend"
+  }
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JWT Token Viewer</title>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #1e1e1e;
+      color: #d4d4d4;
+    }
+    h1 { color: #569cd6; }
+    .section {
+      background: #252526;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+      border-left: 4px solid #569cd6;
+    }
+    .token-display {
+      background: #1e1e1e;
+      padding: 15px;
+      border-radius: 4px;
+      word-break: break-all;
+      color: #ce9178;
+      font-size: 12px;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+    .json-display {
+      background: #1e1e1e;
+      padding: 15px;
+      border-radius: 4px;
+      color: #9cdcfe;
+      white-space: pre-wrap;
+      font-size: 14px;
+    }
+    .label {
+      color: #4ec9b0;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    button {
+      background: #0e639c;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 10px 5px;
+    }
+    button:hover {
+      background: #1177bb;
+    }
+    .status {
+      padding: 10px;
+      border-radius: 4px;
+      margin: 10px 0;
+    }
+    .status.valid { background: #1e3a1e; color: #4ec9b0; }
+    .status.invalid { background: #3a1e1e; color: #f48771; }
+    .status.expired { background: #3a2e1e; color: #dcdcaa; }
+  </style>
+</head>
+<body>
+  <h1>🔐 JWT Token Viewer</h1>
+
+  <div class="section">
+    <div class="label">Access Token from localStorage</div>
+    <div class="token-display" id="accessToken">No token found</div>
+    <div id="accessStatus"></div>
+  </div>
+
+  <div class="section">
+    <div class="label">Decoded Header</div>
+    <div class="json-display" id="header">-</div>
+  </div>
+
+  <div class="section">
+    <div class="label">Decoded Payload (사용자 정보)</div>
+    <div class="json-display" id="payload">-</div>
+  </div>
+
+  <div class="section">
+    <div class="label">Token 정보</div>
+    <div class="json-display" id="tokenInfo">-</div>
+  </div>
+
+  <div class="section">
+    <div class="label">Refresh Token</div>
+    <div class="token-display" id="refreshToken">No token found</div>
+  </div>
+
+  <div>
+    <button onclick="loadTokens()">🔄 Refresh</button>
+    <button onclick="clearTokens()">🗑️ Clear Tokens</button>
+    <button onclick="copyToken()">📋 Copy Access Token</button>
+  </div>
+
+  <script>
+    function decodeJWT(token) {
+      try {
+        const parts = token.split('.');
+        if (parts.length !== 3) return null;
+
+        const header = JSON.parse(atob(parts[0]));
+        const payload = JSON.parse(atob(parts[1]));
+
+        return { header, payload, signature: parts[2] };
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function formatTime(timestamp) {
+      return new Date(timestamp * 1000).toLocaleString('ko-KR');
+    }
+
+    function loadTokens() {
+      const accessToken = localStorage.getItem('accessToken');
+      const refreshToken = localStorage.getItem('refreshToken');
+
+      // Display tokens
+      document.getElementById('accessToken').textContent = accessToken || 'No token found';
+      document.getElementById('refreshToken').textContent = refreshToken || 'No token found';
+
+      if (accessToken) {
+        const decoded = decodeJWT(accessToken);
+
+        if (decoded) {
+          // Header
+          document.getElementById('header').textContent = JSON.stringify(decoded.header, null, 2);
+
+          // Payload
+          document.getElementById('payload').textContent = JSON.stringify(decoded.payload, null, 2);
+
+          // Token Info
+          const now = Math.floor(Date.now() / 1000);
+          const issuedAt = formatTime(decoded.payload.iat);
+          const expiresAt = formatTime(decoded.payload.exp);
+          const timeLeft = decoded.payload.exp - now;
+          const isExpired = timeLeft <= 0;
+          const isValid = timeLeft > 0;
+
+          const info = {
+            '발급 시간': issuedAt,
+            '만료 시간': expiresAt,
+            '남은 시간': isExpired ? '만료됨' : `${Math.floor(timeLeft / 60)}분 ${timeLeft % 60}초`,
+            '상태': isExpired ? '❌ 만료됨' : '✅ 유효함'
+          };
+
+          document.getElementById('tokenInfo').textContent = JSON.stringify(info, null, 2);
+
+          // Status
+          const statusEl = document.getElementById('accessStatus');
+          statusEl.className = 'status ' + (isExpired ? 'expired' : 'valid');
+          statusEl.textContent = isExpired ? '⚠️ Token이 만료되었습니다' : '✅ Token이 유효합니다';
+        }
+      } else {
+        document.getElementById('header').textContent = '로그인이 필요합니다';
+        document.getElementById('payload').textContent = '로그인이 필요합니다';
+        document.getElementById('tokenInfo').textContent = '로그인이 필요합니다';
+        document.getElementById('accessStatus').className = 'status invalid';
+        document.getElementById('accessStatus').textContent = 'ℹ️ 로그인 후 확인할 수 있습니다';
+      }
+    }
+
+    function clearTokens() {
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
+      loadTokens();
+      alert('토큰이 삭제되었습니다');
+    }
+
+    function copyToken() {
+      const token = localStorage.getItem('accessToken');
+      if (token) {
+        navigator.clipboard.writeText(token);
+        alert('토큰이 클립보드에 복사되었습니다!\njwt.io에서 확인해보세요.');
+      } else {
+        alert('복사할 토큰이 없습니다');
+      }
+    }
+
+    // Auto refresh every 5 seconds
+    loadTokens();
+    setInterval(loadTokens, 5000);
+  </script>
+</body>
+</html>
